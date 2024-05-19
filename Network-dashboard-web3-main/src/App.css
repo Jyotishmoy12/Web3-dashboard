@@ -1,0 +1,67 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif; /* Standard font */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+/* Page container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page title */
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #343a40; /* Dark text color */
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff; /* Blue button background */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+/* Input styles */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Error message */
+.error-message {
+    color: #dc3545; /* Red for error messages */
+    font-size: 14px; /* Smaller font size */
+    margin-top: 5px;
+}
+
+/* Link styles */
+.link {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: #0056b3; /* Darker shade of blue on hover */
+}
