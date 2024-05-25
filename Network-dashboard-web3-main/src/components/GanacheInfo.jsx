@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Web3 from 'web3';
-import Chart from 'chart.js/auto'; // Import Chart.js
+import Chart from 'chart.js/auto';
 import './GanacheInfo.css'; // Import CSS file for styling
-
-
 
 function GanacheInfo() {
     const [networkId, setNetworkId] = useState(null);
@@ -13,7 +11,6 @@ function GanacheInfo() {
     const [contractAddress, setContractAddress] = useState('');
     const [nodeInfo, setNodeInfo] = useState(null);
     const [gasPrice, setGasPrice] = useState(null);
-  
 
     // Reference to the Chart instance
     const chartRef = useRef(null);
@@ -27,7 +24,7 @@ function GanacheInfo() {
                 // Get network ID
                 const networkId = await web3.eth.net.getId();
                 console.log('Network ID:', networkId);
-                setNetworkId(networkId);
+                setNetworkId(parseInt(networkId));
 
                 // Get accounts
                 const accounts = await web3.eth.getAccounts();
@@ -38,7 +35,7 @@ function GanacheInfo() {
                 setAccountBalances(balances);
 
                 // Set your smart contract address
-                const contractAddress = '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8';
+                const contractAddress = '0x147A3aF7173FB717d654581Ee82D5Ba203989cC4';
                 setContractAddress(contractAddress);
 
                 // Get node info
@@ -47,7 +44,6 @@ function GanacheInfo() {
                 // Get gas price
                 const gasPrice = await web3.eth.getGasPrice();
                 setGasPrice(gasPrice);
-
             } catch (error) {
                 console.error('Error:', error);
                 setError(error.message || 'An error occurred');
@@ -91,47 +87,47 @@ function GanacheInfo() {
 
     return (
         <div className="ganache-info">
-            <header className="header">
-                <h2>Blockchain Network Dashboard</h2>
-                {error && <p className="error">Error: {error}</p>}
-                <div className="network-info">
-                    <p>Network ID: {networkId}</p>
-                    <p>Smart Contract Address: {contractAddress}</p>
-                    {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
-                    {nodeInfo && <p>Node Info: {nodeInfo}</p>}
-                </div>
-            </header>
-            <div className="main-content">
-                <div className="accounts">
-                    <h3>Accounts</h3>
-                    <ul>
-                        {accounts.map((account, index) => (
-                            <li key={index}>
-                                <p>Address: {account}</p>
-                                {accountBalances.length > 0 && (
-                                    <p>Balance: {Web3.utils.fromWei(accountBalances[index], 'ether')} ETH</p>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="indexes">
-                    <h3>Indexes</h3>
-                    <ul>
-                        {accounts.map((account, index) => (
-                            <li key={index}>
-                                <p>{index}</p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+        <header className="header">
+            <h2>Blockchain Network Dashboard</h2>
+            {error && <p className="error">Error: {error}</p>}
+            <div className="network-info">
+                <p>Network ID: {networkId}</p>
+                <p>Smart Contract Address: {contractAddress}</p>
+                {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
+                {nodeInfo && <p>Node Info: {nodeInfo}</p>}
             </div>
-            {/* Add canvas for Chart.js */}
-            <div className="chart-container">
-                <canvas id="balance-chart"></canvas>
+        </header>
+        <div className="main-content">
+            <div className="account-info">
+                <h3>Accounts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Address</th>
+                            <th>Balance (ETH)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {accounts.map((account, index) => (
+                            <tr key={index}>
+                                <td>{index}</td>
+                                <td>{account}</td>
+                                <td>{accountBalances.length > 0 && Web3.utils.fromWei(accountBalances[index], 'ether')} ETH</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
+        {/* Add canvas for Chart.js */}
+        <div className="chart-container">
+            <canvas id="balance-chart"></canvas>
+        </div>
+    </div>
+    
     );
+    
 }
 
 export default GanacheInfo;

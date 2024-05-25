@@ -1,21 +1,47 @@
-/* Overall container */
+
 .ganache-info {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f8f9fa; /* Light gray background */
+    background-color: #e0eefa; /* Light blue background */
     border: 1px solid #ced4da; /* Light border */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Header */
-.header {
-    text-align: center;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 30px;
+    background-color: #343a40; /* Dark blue background */
+    color: #ebb67e; /* White text color */
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+  }
+  
+  /* Header title */
+  .header h2 {
     font-size: 24px;
-    color: #343a40; /* Dark text color */
-}
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Network Info container */
+  .network-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: #ebb67e; /* White text color */
+  }
+  
+  /* Network Info items */
+  .network-info p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
 
 /* Error messages */
 .error {
@@ -25,52 +51,64 @@
 
 /* Main content container */
 .main-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    padding: 20px;
 }
 
 /* Account and index section */
 .account-info {
-    flex-basis: calc(66.66% - 20px); /* Adjusted width */
     background-color: #fff; /* White background */
     border: 1px solid #ced4da; /* Light border */
     border-radius: 10px; /* Rounded corners */
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Add margin between sections */
 }
 
 /* Account title */
-.accounts h3 {
+.account-info h3 {
     background-color: #007bff; /* Blue header background */
     color: #fff; /* White text color */
     padding: 12px 20px;
     margin: 0;
     border-radius: 10px 10px 0 0; /* Rounded top corners */
     font-size: 18px;
+    margin-bottom: 20px; /* Add margin below header */
 }
 
-/* Index section */
-.index-info {
-    flex-basis: calc(33.33% - 20px); /* Adjusted width */
-    background-color: #fff; /* White background */
-    border: 1px solid #ced4da; /* Light border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Graph section */
-.graph-container {
-    flex-basis: 100%;
-    margin-top: 20px; /* Add margin to separate from account section */
-}
-
-/* Chart */
-.chart-container .chart {
+/* Table styling */
+table {
     width: 100%;
-    height: 300px;
-    background-color: #fff;
-    border: 1px solid #ced4da; /* Light border */
-    border-radius: 10px; /* Rounded corners */
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Adjusted padding */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+
+/* Chart styling */
+
+/* Chart styling */
+.chart-container {
+    width: 100%; /* Full width */
+    max-width: 800px; /* Limiting the max width for larger screens */
+    margin: 0 auto; /* Centering the chart */
+}
+
+canvas#balance-chart {
+    width: 100%; /* Full width */
+    height: 400px; /* Set a fixed height for the chart */
 }

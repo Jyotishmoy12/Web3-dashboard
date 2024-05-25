@@ -38,4 +38,21 @@ contract MyToken {
         emit Transfer(from, to, value);
         return true;
     }
+
+    // New function to print contract details
+    function getContractDetails() public view returns (
+        string memory,
+        string memory,
+        uint256,
+        address,
+        uint256
+    ) {
+        return (
+            name,
+            symbol,
+            totalSupply,
+            address(this),
+            balanceOf[msg.sender]
+        );
+    }
 }
